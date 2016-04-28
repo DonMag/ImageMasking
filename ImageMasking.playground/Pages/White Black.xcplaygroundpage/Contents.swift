@@ -25,3 +25,16 @@ let resultImage : UIImage = UIImage(CGImage: maskedImageRef)
 
 let resultImageView : UIImageView = UIImageView(image: resultImage)
 
+var doSave = false
+//doSave = true
+
+if doSave {
+	var vPath = XCPlaygroundSharedDataDirectoryURL
+
+	let origPath = vPath.URLByAppendingPathComponent("saveoriginal.png")
+	let maskPath = vPath.URLByAppendingPathComponent("savemasked.png")
+	
+	UIImagePNGRepresentation(sourceImage)?.writeToFile(origPath.path!, atomically: true)
+	UIImagePNGRepresentation(resultImage)?.writeToFile(maskPath.path!, atomically: true)
+}
+
